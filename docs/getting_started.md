@@ -248,6 +248,16 @@ For text fields, check for content by calling the method + question mark.
   widget(:form_with_everything).request? # => false
 ```
 
+For **radio button** field groups, the default method returns the checked button's label text. Call the `<name>_value` method to return the value of the checked button.
+
+```ruby
+  # <label for="b">Blue</label>
+  # <input type="radio" id="b" value="#0033CC" checked>
+  widget(:form_with_everything).favorite_color # => Blue
+  widget(:form_with_everything).favorite_color_value # => "#0033CC"
+```
+
+
 ## Submitting a Form
 Dill will easily submit a form for you, via the UI, with either of these methods.
 
