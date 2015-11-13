@@ -295,6 +295,35 @@ module Dill
       end
     end
 
+    # Drags the current widget to the widget defined in *args.
+    #
+    # === Usage
+    #
+    # Given the following widget definitions:
+    #
+    #   class DropZone < Dill::Widget
+    #     root '#drop_zone'
+    #   end
+    #
+    #   class Item < Dill::Widget
+    #     root '#item'
+    #   end
+    #
+    # Send +drag_to+ with target widget arguments to drag a source to a target
+    #
+    #   widget(:item).drag_to(:drop_zone)
+    #
+    # This is the equivalent of doing the following using Capybara:
+    #
+    #   find('#item').drag_to(find('#drop_zone'))
+    def drag_to(*args)
+      target = widget(*args)
+
+      root.drag_to(target)
+    end
+
+    alias_method :to, :drag_to
+
     # Right clicks the current widget, or the child widget given by +name+.
     #
     # === Usage

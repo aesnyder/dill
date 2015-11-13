@@ -32,6 +32,12 @@ module Dill
       widget(name, *args).right_click
     end
 
+    # allows a DSL syntax for dragging
+    # given a :source widget and a :target widget
+    #
+    # drag(:source).to(:target)
+    alias_method :drag, :widget
+
     # @return [Document] the current document with the class of the
     #   current object set as the widget lookup scope.
     def document
